@@ -27,6 +27,4 @@ export const quotations = readable([], async (set) => {
 	set(parsedData);
 });
 
-export const byteRange = readable([], () => {
-	return [0, bytesTotal];
-});
+export const byteRange = readable([0, bytesTotal]);
