@@ -7,7 +7,7 @@ const parseStringObject = (str) => {
 };
 
 export const characters = readable([], async (set) => {
-	const data = await csv('data/character_info.csv', autoType);
+	const data = await csv('data/room_with_a_view/character_info.csv', autoType);
 
 	const parsedData = data.map(d => {
 		return {

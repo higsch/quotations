@@ -4,14 +4,16 @@ import { csv, autoType } from 'd3';
 
 import { characters, standardizeNames, getCharacterId, getCharacterColor } from './characters';
 
-const bytesTotal = 374680;
+// const bytesTotal = 144277; // Alice
+const bytesTotal = 374680; // Room
+// const bytesTotal = 123006; // Winnie
 
 const parseStringArray = (str) => {
 	return str.replace(/[\[\]]/g, '').split(', ').map(d => d.replace(/^\'/, '').replace(/\'$/, ''))
 };
 
 export const quotations = derived([standardizeNames, getCharacterId, getCharacterColor], async ([$standardizeNames, $getCharacterId, $getCharacterColor], set) => {
-	const data = await csv('data/quotation_info.csv', autoType);
+	const data = await csv('data/room_with_a_view/quotation_info.csv', autoType);
 
 	const parsedData = data.map((d) => {
 		const quoteStart = +d.quoteByteSpans.match(/(?<=\[\[)([0-9]+)/g)[0];
