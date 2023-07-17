@@ -14,10 +14,10 @@
 		.curve(curveInterpolator);
 
 	function draw(ctx) {
-		ctx.globalAlpha = 0.2;
+		ctx.globalAlpha = 0.4;
 
 		ctx.strokeStyle = color || 'white';
-		ctx.lineWidth = 2;
+		ctx.lineWidth = 4;
 
 		ctx.beginPath();
 		ctx.stroke(new Path2D(path));

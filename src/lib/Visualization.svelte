@@ -48,7 +48,8 @@
 
 	$: characterLines = $characters.map((c, i) => {
 		const characterQuotations = renderedQuotations.filter(q => q.speaker === c.name || q.addresses.includes(c.name));
-		const coords = [[posScale.range()[0], offsetScale(c.name)], ...characterQuotations.map(q => ([q.pos, q.offset])), [posScale.range()[1], offsetScale(c.name)]];
+		// const coords = [[posScale.range()[0], offsetScale(c.name)], ...characterQuotations.map(q => ([q.pos, q.offset])), [posScale.range()[1], offsetScale(c.name)]];
+		const coords = characterQuotations.map(q => ([q.pos, q.offset]));
 		const color = c.Color;
 		return {
 			name: c.name,
@@ -65,25 +66,35 @@
 		bind:clientWidth={width}
 		bind:clientHeight={height}
 	>
-	<Canvas
-		width={width}
-		height={height}
-		--position="absolute"
-		--z-index="0"
-	>
-		{#each characterLines as { name, coords, color } (name)}
-			<Line
-				coords={coords}
-				color={color}
-			/>
-		{/each}
-	</Canvas>
+		<Canvas
+			width={width}
+			height={height}
+			--position="absolute"
+			--z-index="0"
+		>
+			{#each characterLines as { name, coords, color } (name)}
+				<Line
+					coords={coords}
+					color={color}
+				/>
+			{/each}
+		</Canvas>
 		<Canvas
 			width={width}
 			height={height}
 			--position="absolute"
 			--z-index="10"
 		>
+			{#each renderedQuotations as { quoteID, pos, offset, radius } (quoteID)}
+				<Quotation
+					pos={pos}
+					radius={radius}
+					offset={offset}
+					width={offsetScale.step() / 1}
+					color='#1b1b1b'
+					alpha="1.0"
+				/>
+			{/each}
 			{#each renderedQuotations as { quoteID, pos, offset, radius, color } (quoteID)}
 				<Quotation
 					pos={pos}
@@ -91,6 +102,7 @@
 					offset={offset}
 					width={offsetScale.step() / 1}
 					color={color}
+					alpha="0.2"
 				/>
 			{/each}
 		</Canvas>

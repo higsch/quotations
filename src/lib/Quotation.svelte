@@ -6,6 +6,7 @@
 	export let offset;
 	export let width = 2;
 	export let color;
+	export let alpha;
 	export let compositeOperation = 'multiply';
 	export let contextName = 'canvas';
 
@@ -13,12 +14,10 @@
 
 	function draw(ctx) {
 		// ctx.globalCompositeOperation = compositeOperation;
-
-		ctx.globalAlpha = 0.2;
-
-		ctx.fillStyle = color || 'white';
 		ctx.lineWidth = width;
-
+		
+		ctx.globalAlpha = alpha || 0.2;
+		ctx.fillStyle = color || 'white';
 		ctx.beginPath();
 		ctx.arc(pos, offset, radius, 0, 2 * Math.PI);
 		ctx.fill();
