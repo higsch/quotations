@@ -1,43 +1,62 @@
 <script>
-	import { scaleLinear, scalePoint, mean } from 'd3';
+	import { scaleLinear, scalePoint, scaleSqrt, mean } from 'd3';
 
-	import { byteRange, quotations } from '../stores/quotations';
+	import { byteRange, byteLengthRange, quotations, quotationsPerCharacter } from '../stores/quotations';
 	import { characters } from '../stores/characters';
 
 	import Canvas from './Canvas.svelte';
+	import Line from './Line.svelte';
 	import Quotation from './Quotation.svelte';
 
 	const padding = {
-		top: 16,
-		right: 16,
-		bottom: 16,
-		left: 16
+		top: 32,
+		right: 32,
+		bottom: 32,
+		left: 32
 	};
 
 	let width, height;
 
-	$: characterScale = scalePoint()
-		.domain($characters.map(d => d.name))
-		.range([padding.top, height - padding.bottom]);
-
-	$: byteScale = scaleLinear()
+	$: posScale = scaleLinear()
 		.domain($byteRange)
 		.range([padding.left, width - padding.right]);
 
+	$: offsetScale = scalePoint()
+		.domain($quotationsPerCharacter.filter(d => d.numQuotations > 0).map(d => d.name))
+		.range([padding.top, height - padding.bottom]);
+
+	$: radiusScale = scaleSqrt()
+		.domain($byteLengthRange)
+		.range([0, 32*2]);
+
 	$: renderedQuotations = $quotations.map(q => {
-		const startPos = byteScale(q.quoteStart);
-		const endPos = byteScale(q.quoteEnd);
-		// const offset = mean([characterScale(q.speaker), ...q.addresses.map(a => characterScale(a))]);
-		const offset = characterScale(q.speaker);
+		const startPos = posScale(q.quoteStart);
+		const endPos = posScale(q.quoteEnd);
+		const pos = mean([startPos, endPos]);
+		// const offset = mean([offsetScale(q.speaker), ...q.addresses.map(a => offsetScale(a))]);
+		const offset = offsetScale(q.speaker);
+		const radius = radiusScale(q.quoteEnd - q.quoteStart);
+		const color = q.speakerColor;
 		return {
 			...q,
-			startPos,
-			endPos,
-			offset
+			pos,
+			offset,
+			radius,
+			color
 		};
 	});
 
-	$: console.log(characterScale('The Fish-Footman'));
+	$: characterLines = $characters.map((c, i) => {
+		const characterQuotations = renderedQuotations.filter(q => q.speaker === c.name || q.addresses.includes(c.name));
+		const coords = [[posScale.range()[0], offsetScale(c.name)], ...characterQuotations.map(q => ([q.pos, q.offset])), [posScale.range()[1], offsetScale(c.name)]];
+		const color = c.Color;
+		return {
+			name: c.name,
+			numQuotations: characterQuotations.length,
+			coords,
+			color
+		};
+	});
 </script>
 
 <div class="visualization">
@@ -46,16 +65,32 @@
 		bind:clientWidth={width}
 		bind:clientHeight={height}
 	>
+	<Canvas
+		width={width}
+		height={height}
+		--position="absolute"
+		--z-index="0"
+	>
+		{#each characterLines as { name, coords, color } (name)}
+			<Line
+				coords={coords}
+				color={color}
+			/>
+		{/each}
+	</Canvas>
 		<Canvas
 			width={width}
 			height={height}
+			--position="absolute"
+			--z-index="10"
 		>
-			{#each renderedQuotations as { quoteID, startPos, endPos, offset } (quoteID)}
+			{#each renderedQuotations as { quoteID, pos, offset, radius, color } (quoteID)}
 				<Quotation
-					start={startPos}
-					end={endPos}
+					pos={pos}
+					radius={radius}
 					offset={offset}
-					width={characterScale.step() / 1}
+					width={offsetScale.step() / 1}
+					color={color}
 				/>
 			{/each}
 		</Canvas>
@@ -72,6 +107,7 @@
 
 	.canvas-wrapper {
 		flex: 1;
+		position: relative;
 		overflow: hidden;
 	}
 </style>
