@@ -49,7 +49,8 @@ export const quotationsPerCharacter = derived([characters, quotations], ([$chara
 		const numQuotations = $quotations.filter(q => q.speaker === c.name || q.addresses.includes(c.name)).length;
 		return {
 			name: c.name,
-			numQuotations
+			numQuotations,
+			color: c.Color
 		};
 	}).sort((a, b) => b.numQuotations - a.numQuotations);
 });
