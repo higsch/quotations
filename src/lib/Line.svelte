@@ -1,6 +1,6 @@
 <script>
 	import { getContext, onMount, onDestroy, afterUpdate } from 'svelte';
-	import { line, curveBumpX as curveInterpolator } from 'd3';
+	import { line, curveLinear as curveInterpolator } from 'd3';
 
 	export let coords;
 	export let color;
@@ -14,10 +14,10 @@
 		.curve(curveInterpolator);
 
 	function draw(ctx) {
-		ctx.globalAlpha = 0.4;
+		ctx.globalAlpha = 1.0;
 
 		ctx.strokeStyle = color || 'white';
-		ctx.lineWidth = 4;
+		ctx.lineWidth = 3;
 
 		ctx.beginPath();
 		ctx.stroke(new Path2D(path));

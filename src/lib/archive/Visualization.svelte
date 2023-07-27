@@ -1,12 +1,12 @@
 <script>
 	import { scaleLinear, scalePoint, scaleSqrt, mean } from 'd3';
 
-	import { byteRange, byteLengthRange, quotations, quotationsPerCharacter } from '../stores/quotations';
-	import { characters } from '../stores/characters';
+	import { byteRange, byteLengthRange, quotations, quotationsPerCharacter } from '../../stores/quotations';
 
-	import Canvas from './Canvas.svelte';
-	import Line from './Line.svelte';
-	import Quotation from './Quotation.svelte';
+	import Canvas from '../Canvas.svelte';
+	import Line from '../Line.svelte';
+	import Quotation from '../Quotation.svelte';
+	import { layoutLinkForce } from '../../utils/layout';
 
 	const padding = {
 		top: 32,
@@ -16,6 +16,7 @@
 	};
 
 	let width, height;
+	let forceQuotations = [];
 
 	$: posScale = scaleLinear()
 		.domain($byteRange)
@@ -27,14 +28,13 @@
 
 	$: radiusScale = scaleSqrt()
 		.domain($byteLengthRange)
-		.range([0, 32*2]);
+		.range([0, width / 70]);
 
 	$: renderedQuotations = $quotations.map(q => {
 		const startPos = posScale(q.quoteStart);
 		const endPos = posScale(q.quoteEnd);
 		const pos = mean([startPos, endPos]);
 		const offset = mean([offsetScale(q.speaker), ...q.addresses.map(a => offsetScale(a))]);
-		// const offset = offsetScale(q.speaker);
 		const radius = radiusScale(q.quoteEnd - q.quoteStart);
 		const color = q.speakerColor;
 		return {
@@ -42,14 +42,35 @@
 			pos,
 			offset,
 			radius,
-			color
+			color,
+			x: pos,
+			y: offset
 		};
 	});
 
-	$: characterLines = $quotationsPerCharacter.map(c => {
+	$: links = $quotationsPerCharacter.map(c => {
 		const characterQuotations = renderedQuotations.filter(q => q.speaker === c.name || q.addresses.includes(c.name));
-		// const coords = [[posScale.range()[0], offsetScale(c.name)], ...characterQuotations.map(q => ([q.pos, q.offset])), [posScale.range()[1], offsetScale(c.name)]];
-		const coords = characterQuotations.map(q => ([q.pos, q.offset]));
+		return characterQuotations.map((q, i, arr) => {
+			return {
+				source: q.quoteID,
+				target: arr[i + 1] ? arr[i + 1].quoteID : undefined
+			};
+		});
+	})
+	.flat()
+	.filter(d => d.target !== undefined && d.source !== undefined);
+		
+	$: (async () => {
+		forceQuotations = await layoutLinkForce(renderedQuotations, links, {
+			nodeId: 'quoteID',
+			width,
+			height
+		});
+	})();
+
+	$: forceCharacterLines = $quotationsPerCharacter.map(c => {
+		const characterQuotations = forceQuotations.filter(q => q.speaker === c.name || q.addresses.includes(c.name));
+		const coords = characterQuotations.map(q => ([q.pos, q.y]));
 		const color = c.color;
 		return {
 			name: c.name,
@@ -59,11 +80,11 @@
 		};
 	});
 
-	$: console.log($quotationsPerCharacter);
+	$: console.log(forceQuotations);
 </script>
 
 <div class="visualization">
-	{#if (characterLines.length)}
+	{#if (forceCharacterLines.length)}
 		<div
 			class="canvas-wrapper"
 			bind:clientWidth={width}
@@ -75,7 +96,7 @@
 				--position="absolute"
 				--z-index="100"
 			>
-				{#each characterLines as { name, coords, color } (name)}
+				{#each forceCharacterLines as { name, coords, color } (name)}
 					<Line
 						coords={coords}
 						color={color}
@@ -86,26 +107,26 @@
 				width={width}
 				height={height}
 				--position="absolute"
-				--z-index="10"
+				--z-index="110"
 			>
-				{#each renderedQuotations as { quoteID, pos, offset, radius } (quoteID)}
+				{#each forceQuotations as { quoteID, pos, x, y, radius } (quoteID)}
 					<Quotation
 						pos={pos}
 						radius={radius}
-						offset={offset}
+						offset={y}
 						width={offsetScale.step() / 1}
 						color='#1b1b1b'
 						alpha="1.0"
 					/>
 				{/each}
-				{#each renderedQuotations as { quoteID, pos, offset, radius, color } (quoteID)}
+				{#each forceQuotations as { quoteID, pos, x, y, radius, color } (quoteID)}
 					<Quotation
 						pos={pos}
 						radius={radius}
-						offset={offset}
+						offset={y}
 						width={offsetScale.step() / 1}
 						color={color}
-						alpha="0.2"
+						alpha="0.5"
 					/>
 				{/each}
 			</Canvas>
