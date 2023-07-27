@@ -54,6 +54,7 @@
 		<path
 			d={lineGenerator(spiralData)}
 			fill="none"
+			opacity="0.5"
 			stroke="white"
 			stroke-width="2"
 			stroke-linecap="round"

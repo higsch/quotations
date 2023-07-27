@@ -4,6 +4,7 @@
 
 	export let coords;
 	export let color;
+	export let lineWidth = 1;
 	export let contextName = 'canvas';
 
 	const { register, deregister, invalidate } = getContext(contextName);
@@ -17,7 +18,7 @@
 		ctx.globalAlpha = 1.0;
 
 		ctx.strokeStyle = color || 'white';
-		ctx.lineWidth = 3;
+		ctx.lineWidth = lineWidth;
 
 		ctx.beginPath();
 		ctx.stroke(new Path2D(path));

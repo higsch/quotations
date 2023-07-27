@@ -21,16 +21,14 @@
 
 	$: minDim = Math.min(width, height);
 
-	$: positionScale = scaleLinear()
-		.domain($byteRange)
-		.range([0, 1]);
+	$: positionScale = scaleLinear().domain($byteRange).range([0, 1]);
 
 	$: radiusScale = scaleSqrt()
 		.domain($byteLengthRange)
 		.range([0, minDim / 25]);
 
 	$: renderedQuotations = $quotations.map((q) => {
-		const [x, y] = getPositionOnSpiral(positionScale(q.quoteStart));
+		const [x, y] = getPositionOnSpiral(positionScale((q.quoteEnd + q.quoteStart) / 2));
 		const radius = radiusScale(q.quoteEnd - q.quoteStart);
 		const color = q.speakerColor;
 		return {
@@ -38,20 +36,20 @@
 			y,
 			radius,
 			color,
-			...q
+			...q,
 		};
 	});
 
-	$: characterLines = $quotationsPerCharacter.map(c => {
-		const characterQuotations = renderedQuotations.filter(q => q.speaker === c.name || q.addresses.includes(c.name));
+	$: characterLines = $quotationsPerCharacter.map((c) => {
+		const characterQuotations = renderedQuotations.filter(
+			(q) => q.speaker === c.name || q.addresses.includes(c.name)
+		);
 		return {
 			name: c.name,
-			coords: characterQuotations.map(q => [q.x, q.y]),
+			coords: characterQuotations.map((q) => [q.x, q.y]),
 			color: c.color,
 		};
 	});
-
-	$: console.log(characterLines)
 </script>
 
 <div class="visualization">
@@ -67,25 +65,26 @@
 			<Spiral
 				startRadius={minDim / 20}
 				endRadius={minDim / 2 - padding}
-				rounds={10}
+				rounds={20}
 				center={[width / 2, height / 2]}
 				bind:getPosition={getPositionOnSpiral}
-				hide
+				hide={false}
 			/>
 		</svg>
 		<Canvas
-				width={width}
-				height={height}
-				--position="absolute"
-				--z-index="100"
-			>
-				{#each characterLines as { name, coords, color } (name)}
-					<Line
-						coords={coords}
-						color={color}
-					/>
-				{/each}
-			</Canvas>
+			width={width}
+			height={height}
+			--position="absolute"
+			--z-index="100"
+		>
+			{#each characterLines.slice(0, 1) as { name, coords, color } (name)}
+				<Line
+					coords={coords}
+					color={color}
+					lineWidth={minDim / 200}
+				/>
+			{/each}
+		</Canvas>
 		<Canvas
 			width={width}
 			height={height}

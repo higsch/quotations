@@ -9,8 +9,8 @@ import {
 	getCharacterColor,
 } from './characters';
 
-// const bytesTotal = 144277; // Alice
-const bytesTotal = 374680; // Room
+const bytesTotal = 144277; // Alice
+// const bytesTotal = 374680; // Room
 // const bytesTotal = 123006; // Winnie
 
 const parseStringArray = (str) => {
@@ -24,7 +24,7 @@ export const quotations = derived(
 	[standardizeNames, getCharacterId, getCharacterColor],
 	async ([$standardizeNames, $getCharacterId, $getCharacterColor], set) => {
 		const data = await csv(
-			'data/room_with_a_view/quotation_info.csv',
+			'data/alice/quotation_info.csv',
 			autoType
 		);
 
