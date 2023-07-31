@@ -1,5 +1,5 @@
 <script>
-	import Visualization from './lib/Visualization3.svelte';
+	import Visualization from './lib/Visualization.svelte';
 </script>
 
 <div class="wrapper">

@@ -1,64 +1,64 @@
 Character ID,Main Name,Aliases,Gender,Category,Color
-0,Mr. Vyse,"{'Cecil', 'Mr. Vyse'}",M,intermediate,#64dfdf
-1,Freddy,"{'Freddy', 'Lucy'S Brother', 'Honeychurch'}",M,intermediate,#56cfe1
-2,George Emerson,"{'George', 'George Emerson', 'Emerson'}",M,intermediate,#48bfe3
-3,Lennie,{'Lennie'},X,minor,
-4,Miss Honeychurch,"{'Lucy', 'Lucia', 'Miss Honeychurch'}",F,major,#fcf6bd
-5,Minnie Beebe,"{'Beebe', 'Minnie', 'Minnie Beebe'}",F,minor,
-6,Miss Bartlett,"{'Miss Bartlett', 'Charlotte'}",F,major,#ffcad4
-7,Miss Catherine Alan,"{'Miss Catherine Alan', 'Miss Catharine Alan', 'Miss Catherine', 'Miss Catharine', 'Miss Alan'}",F,minor,
-8,Miss Lavish,"{'The Clever Lady', 'Miss Lavish', 'Joseph Emery Prank', 'Eleanor', 'Clever Lady'}",F,intermediate,#4ea8de
-9,Miss Teresa,"{'Miss Teresa', 'Miss Teresa Alan'}",F,minor,
-10,Mr. Beebe,"{'Arthur', 'Mr. Beebe'}",M,major,#f4acb7
-11,Mr. Emerson,"{'Mr. Emerson', 'Old Mr. Emerson', 'The Old Mr. Emerson'}",M,intermediate,#5390d9
-12,Mr. Floyd,{'Mr. Floyd'},M,minor,
-13,Mr. Honeychurch,{'Mr. Honeychurch'},M,minor,
-14,Mrs. Beebe,{'Mrs. Beebe'},F,minor,
-15,Mrs. Butterworth,{'Mrs. Butterworth'},F,minor,
-16,Mrs. Emerson,{'Mrs. Emerson'},F,minor,
-17,Mrs. Honeychurch,"{'Mrs. Honeychurch', 'Marian'}",F,major,#FCCAF7
-18,Mrs. Vyse,"{'Mrs. Vyse', 'Vyse'}",F,minor,
-19,Persephone,"{'The Girl', 'Persephone'}",F,minor,
-20,Powell,{'Powell'},M,minor,
-21,Sir Harry Otway,"{'Sir Harry', 'Sir Harry Otway'}",M,minor,
-22,The Cabman,{'The Cabman'},M,minor,
-23,The Maid,{'The Maid'},F,minor,
-24,Alan,{'Alan'},X,minor,
-25,Beethoven,{'Beethoven'},X,minor,
-26,Fate,{'Fate'},X,minor,
-27,Giotto,{'Giotto'},X,minor,
-28,Leonardo,{'Leonardo'},X,minor,
-29,Nature,{'Nature'},X,minor,
-30,Schumann,{'Schumann'},X,minor,
-31,The Arno,{'The Arno'},X,minor,
-32,The Clergyman,{'The Clergyman'},X,minor,
-33,The Hostess,{'The Hostess'},X,minor,
-34,The Lady,{'The Lady'},F,minor,
-35,The Son,{'The Son'},M,minor,
-36,Anne,{'Anne'},X,minor,
-37,Euphemia,{'Euphemia'},X,minor,
-38,Lady Otway,{'Lady Otway'},F,minor,
-39,Mary,{'Mary'},X,minor,
-40,Mr. Flack,{'Mr. Flack'},M,minor,
-41,Miss Flack,{'Miss Flack'},F,minor,
-42,Mrs. Eager,{'Mrs. Eager'},F,minor,
-43,Saturn,{'Saturn'},X,minor,
-44,The Driver,"{'The Driver', 'Phaethon'}",M,minor,
-45,Contessa Baroncelli,{'Contessa Baroncelli'},X,minor,
-46,Italian Lady,{'Italian Lady'},F,minor,
-47,Lady Helen Laverstock,{'Lady Helen Laverstock'},F,minor,
-48,Miss Pole,{'Miss Pole'},F,minor,
-49,Rev. Cuthbert Eager,"{'Mr Eager', 'Rev. Cuthbert Eager', 'The Chaplain', 'Mr. Eager'}",M,intermediate,#5e60ce
-50,Mr. Gladstone,{'Mr. Gladstone'},M,minor,
-51,Mrs. Grundy,{'Mrs. Grundy'},F,minor,
-52,Signora Bertolini,{'Signora Bertolini'},X,minor,
-53,The Bishop,{'The Bishop'},X,minor,
-54,The Chambermaid,{'The Chambermaid'},F,minor,
-55,The Child,{'The Child'},X,minor,
-56,The Little Old Lady,"{'The Little Old Lady', 'A Little Old Lady', 'Little Old Lady (Unknown)', 'Little Old Lady', 'The Little Old Lady (Unknown)'}",F,minor,
-57,The Vicar,{'The Vicar'},M,minor,
-58,Vendor Of Photographs,{'Vendor Of Photographs'},X,minor,
-59,Vicar Of St. Peter'S,"{'Vicar Of St. Peter'S'}",X,minor,
-60,He-Baby,{'He-Baby'},X,minor,
-61,Lucy'S Mother,"{'Lucy'S Mother'}",F,minor,
-62,Ms. Teresa,{'Ms. Teresa'},F,minor,
+0,Mr. Vyse,"{'Cecil', 'Mr. Vyse'}",M,intermediate,#ffd60a
+1,Freddy,"{'Freddy', 'Lucy'S Brother', 'Honeychurch'}",M,intermediate,#000000
+2,George Emerson,"{'George', 'George Emerson', 'Emerson'}",M,intermediate,#ff0a54
+3,Lennie,{'Lennie'},X,minor,#000000
+4,Miss Honeychurch,"{'Lucy', 'Lucia', 'Miss Honeychurch'}",F,major,#ffffff
+5,Minnie Beebe,"{'Beebe', 'Minnie', 'Minnie Beebe'}",F,minor,#000000
+6,Miss Bartlett,"{'Miss Bartlett', 'Charlotte'}",F,major,#c77dff
+7,Miss Catherine Alan,"{'Miss Catherine Alan', 'Miss Catharine Alan', 'Miss Catherine', 'Miss Catharine', 'Miss Alan'}",F,minor,#000000
+8,Miss Lavish,"{'The Clever Lady', 'Miss Lavish', 'Joseph Emery Prank', 'Eleanor', 'Clever Lady'}",F,intermediate,#000000
+9,Miss Teresa,"{'Miss Teresa', 'Miss Teresa Alan'}",F,minor,#000000
+10,Mr. Beebe,"{'Arthur', 'Mr. Beebe'}",M,major,#000000
+11,Mr. Emerson,"{'Mr. Emerson', 'Old Mr. Emerson', 'The Old Mr. Emerson'}",M,intermediate,#000000
+12,Mr. Floyd,{'Mr. Floyd'},M,minor,#000000
+13,Mr. Honeychurch,{'Mr. Honeychurch'},M,minor,#000000
+14,Mrs. Beebe,{'Mrs. Beebe'},F,minor,#000000
+15,Mrs. Butterworth,{'Mrs. Butterworth'},F,minor,#000000
+16,Mrs. Emerson,{'Mrs. Emerson'},F,minor,#000000
+17,Mrs. Honeychurch,"{'Mrs. Honeychurch', 'Marian'}",F,major,#000000
+18,Mrs. Vyse,"{'Mrs. Vyse', 'Vyse'}",F,minor,#000000
+19,Persephone,"{'The Girl', 'Persephone'}",F,minor,#000000
+20,Powell,{'Powell'},M,minor,#000000
+21,Sir Harry Otway,"{'Sir Harry', 'Sir Harry Otway'}",M,minor,#000000
+22,The Cabman,{'The Cabman'},M,minor,#000000
+23,The Maid,{'The Maid'},F,minor,#000000
+24,Alan,{'Alan'},X,minor,#000000
+25,Beethoven,{'Beethoven'},X,minor,#000000
+26,Fate,{'Fate'},X,minor,#000000
+27,Giotto,{'Giotto'},X,minor,#000000
+28,Leonardo,{'Leonardo'},X,minor,#000000
+29,Nature,{'Nature'},X,minor,#000000
+30,Schumann,{'Schumann'},X,minor,#000000
+31,The Arno,{'The Arno'},X,minor,#000000
+32,The Clergyman,{'The Clergyman'},X,minor,#000000
+33,The Hostess,{'The Hostess'},X,minor,#000000
+34,The Lady,{'The Lady'},F,minor,#000000
+35,The Son,{'The Son'},M,minor,#000000
+36,Anne,{'Anne'},X,minor,#000000
+37,Euphemia,{'Euphemia'},X,minor,#000000
+38,Lady Otway,{'Lady Otway'},F,minor,#000000
+39,Mary,{'Mary'},X,minor,#000000
+40,Mr. Flack,{'Mr. Flack'},M,minor,#000000
+41,Miss Flack,{'Miss Flack'},F,minor,#000000
+42,Mrs. Eager,{'Mrs. Eager'},F,minor,#000000
+43,Saturn,{'Saturn'},X,minor,#000000
+44,The Driver,"{'The Driver', 'Phaethon'}",M,minor,#000000
+45,Contessa Baroncelli,{'Contessa Baroncelli'},X,minor,#000000
+46,Italian Lady,{'Italian Lady'},F,minor,#000000
+47,Lady Helen Laverstock,{'Lady Helen Laverstock'},F,minor,#000000
+48,Miss Pole,{'Miss Pole'},F,minor,#000000
+49,Rev. Cuthbert Eager,"{'Mr Eager', 'Rev. Cuthbert Eager', 'The Chaplain', 'Mr. Eager'}",M,intermediate,#000000
+50,Mr. Gladstone,{'Mr. Gladstone'},M,minor,#000000
+51,Mrs. Grundy,{'Mrs. Grundy'},F,minor,#000000
+52,Signora Bertolini,{'Signora Bertolini'},X,minor,#000000
+53,The Bishop,{'The Bishop'},X,minor,#000000
+54,The Chambermaid,{'The Chambermaid'},F,minor,#000000
+55,The Child,{'The Child'},X,minor,#000000
+56,The Little Old Lady,"{'The Little Old Lady', 'A Little Old Lady', 'Little Old Lady (Unknown)', 'Little Old Lady', 'The Little Old Lady (Unknown)'}",F,minor,#000000
+57,The Vicar,{'The Vicar'},M,minor,#000000
+58,Vendor Of Photographs,{'Vendor Of Photographs'},X,minor,#000000
+59,Vicar Of St. Peter'S,"{'Vicar Of St. Peter'S'}",X,minor,#000000
+60,He-Baby,{'He-Baby'},X,minor,#000000
+61,Lucy'S Mother,"{'Lucy'S Mother'}",F,minor,#000000
+62,Ms. Teresa,{'Ms. Teresa'},F,minor,#000000

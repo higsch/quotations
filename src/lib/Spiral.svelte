@@ -7,6 +7,8 @@
 	export let rounds = 10;
 	export let center = [0, 0];
 	export let getPosition = () => [0, 0];
+	export let color;
+	export let opacity = 1;
 	export let hide = false;
 
 	const resolution = 100;
@@ -54,9 +56,9 @@
 		<path
 			d={lineGenerator(spiralData)}
 			fill="none"
-			opacity="0.5"
-			stroke="white"
-			stroke-width="2"
+			opacity={opacity}
+			stroke={color}
+			stroke-width="5"
 			stroke-linecap="round"
 			bind:this={path}
 		/>
