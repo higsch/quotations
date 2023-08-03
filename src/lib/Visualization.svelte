@@ -15,9 +15,10 @@
 	const padding = 16;
 	const minDim = 1000;
 	const lineSourceDistance = 140;
-	const mainCharacters = [6, 4];
+	// const mainCharacters = [6, 4];
 	// const mainCharacters = [2, 4];
 	// const mainCharacters = [0, 4];
+	const mainCharacters = [17, 4];
 
 	let width, height;
 	let getPositionOnSpiral;
@@ -73,8 +74,8 @@
 					endRadius={minDim / 2 - padding}
 					rounds={20}
 					center={[width / 2, height / 2]}
-					color="#000000"
-					opacity={0.5}
+					color="#FFFFFF"
+					opacity={0.4}
 					bind:getPosition={getPositionOnSpiral}
 				/>
 				{#each characterLines as { speakerId, sourceCoords, targetCoords, color } (speakerId)}
@@ -83,7 +84,7 @@
 						targetCoords={targetCoords}
 						color={color}
 						opacity={0.2}
-						strokeWidth={3}
+						strokeWidth={3/5}
 					/>
 				{/each}
 				{#each renderedQuotations.filter(d => !mainCharacters.includes(d.speakerId)) as { quoteID, x, y, radius } (quoteID)}

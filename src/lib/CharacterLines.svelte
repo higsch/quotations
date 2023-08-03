@@ -14,7 +14,7 @@
 				C${(sourceCoords[0] + x) / 2} ${sourceCoords[1]} ${(sourceCoords[0] + x) / 2} ${y} ${x} ${y}
 			`}
 			stroke={color}
-			stroke-width={strokeWidth}
+			stroke-width="{strokeWidth}px"
 			stroke-opacity={opacity}
 			stroke-linecap="round"
 			fill="none"

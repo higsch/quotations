@@ -58,7 +58,7 @@
 			fill="none"
 			opacity={opacity}
 			stroke={color}
-			stroke-width="5"
+			stroke-width="1px"
 			stroke-linecap="round"
 			bind:this={path}
 		/>
